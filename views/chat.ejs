@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mini Whatsapp</title>
+    <style>
+        .heading{
+            
+            gap: 200%;
+           
+            flex-wrap: wrap;              
+        }
+        .container{
+            background-color: rgb(158, 95, 126);
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            background-color: aquamarine;
+            height: auto;
+            width: 80vw;
+            margin: auto;
+            align-content: space-around;  
+            justify-content: space-around;         
+        }
+        .card{
+            margin: 1%;
+            padding: 2%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            background-color: bisque;
+            border-radius: 5%;
+
+            
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Chat Mini WhatsApp <br>
+         <button><a href="/chat/new">Create New message</a></button></h1>
+    
+
+
+   
+    <div class="container">
+
+    <% for (let chat of chats){ %>
+        <div class="card">
+        From : <%= chat.from %> <br>
+        To : <%= chat.to %> <br>
+        Message : <%= chat.msg %> <br>
+        Time: <%= chat.Date.toString().split(" ")[4]%>
+        <form method="get" action="/chat/<%=chat._id%>/edit">
+            <button>Edit Message</button>
+        </form><br>
+        <form method="post" action="/chat/<%= chat._id %>?_method=DELETE">
+            <button>Delete Message</button>
+        </form><br>
+        
+
+
+    
+    </div>
+         
+    <% } %>
+</div>
+
+   
+</div>
+
+    
+</body>
+</html>
